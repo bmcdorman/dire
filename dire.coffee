@@ -3,7 +3,7 @@
 gm = require 'googlemaps'
 polyline = require 'polyline-encoded'
 
-simulation_speed = 1.0
+simulation_speed = 4.0
 
 # if process.argv.length > 2
 #  simulation_speed = parseFloat process.argv[2]
@@ -66,7 +66,7 @@ gather_and_start = (err, data) ->
         lat: latlng[0]
         lng: latlng[1]
   
-  sim_interval = setInterval(sim, 500)
+  sim_interval = setInterval(sim, 2000)
 
 process.stdin.on 'end', ->
   input = JSON.parse(accum)
