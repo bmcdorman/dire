@@ -1,0 +1,14 @@
+{
+  "name": "dire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Braden McDorman",
+  "license": "ISC",
+  "dependencies": {
+    "googlemaps": "^0.1.20"
+  }
+}
