@@ -3,7 +3,7 @@
 gm = require 'googlemaps'
 polyline = require 'polyline-encoded'
 
-simulation_speed = 4.0
+simulation_speed = 20.0
 
 # if process.argv.length > 2
 #  simulation_speed = parseFloat process.argv[2]
@@ -15,9 +15,7 @@ remaining_distance = 0.0
 EPSILON = 0.0000001
 
 distance = (a, b) -> Math.sqrt(Math.pow(a.lat - b.lat, 2) + Math.pow(a.lng - b.lng, 2))
-chomp = (a, b) ->
-  return 0 if a - b < 0
-  a - b
+chomp = (a, b) -> a - b
 
 compute_loc = (c, n, d) ->
   dlat = n.lat - c.lat
@@ -39,7 +37,7 @@ sim = ->
     if next is undefined
       clearInterval sim_interval
       return
-    remaining_distance = distance(current, next)
+    remaining_distance = distance(current, next) + remaining_distance
   
   remaining_distance = chomp(remaining_distance, simulation_speed / 1000)
   console.log JSON.stringify(compute_loc(current, next, remaining_distance))
