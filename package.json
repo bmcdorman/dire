@@ -9,6 +9,7 @@
   "author": "Braden McDorman",
   "license": "ISC",
   "dependencies": {
-    "googlemaps": "^0.1.20"
+    "googlemaps": "^0.1.20",
+    "polyline-encoded": "0.0.7"
   }
 }

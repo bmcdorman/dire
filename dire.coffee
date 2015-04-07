@@ -1,6 +1,7 @@
 # Dire
 
 gm = require 'googlemaps'
+polyline = require 'polyline-encoded'
 
 simulation_speed = 1.0
 
@@ -57,14 +58,14 @@ gather_and_start = (err, data) ->
   for step in data.routes[0].legs[0].steps
     if first is false
       next = step.start_location
-      waypoints.push step.end_location
       first = true
       continue
+    latlngs = polyline.decode step.polyline.points
+    for latlng in latlngs
+      waypoints.push
+        lat: latlng[0]
+        lng: latlng[1]
   
-    waypoints.push step.start_location
-    waypoints.push step.end_location
-  
-  console.log JSON.stringify(waypoints)
   sim_interval = setInterval(sim, 500)
 
 process.stdin.on 'end', ->
